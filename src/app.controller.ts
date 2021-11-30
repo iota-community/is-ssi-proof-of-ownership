@@ -1,11 +1,11 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 
-@Controller("/api/v1/ownership")
+@Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Post("prove")
+  @Post("/api/v1/ownership/prove")
   async prove(@Body() body: any) {
     try {
       const { did, timestamp, signature } = body;

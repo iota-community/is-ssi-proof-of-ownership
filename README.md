@@ -2,7 +2,29 @@ Microservice based on Integration Services and IOTA SSI that allow a client to p
 
 ## Description
 
-Proof of ownership microservice
+Proof of ownership is a triple with an SSI identifier (DID), a timestamp, and a signature (obtained signing the timestamp with the identity's private key).
+
+## How to use it
+
+Using [httpie](https://httpie.io/):
+
+```bash
+$ http POST <service host>/api/v1/ownership/prove \
+    did=<did:iota:...> \
+    timestamp=<e.g. new Date().getTime()> \
+    signature=<hex signature>
+```
+
+You can see an example of how a digital proof of ownership 
+could be created looking in `example` directory.
+
+You can see an example of how an invocation could be running:
+
+```
+$ npm run example 
+```
+
+This script will create an example of a payload that can be sent to microservice to prove ownership of an SSI identity (`did:iota:2xCZnoUYakpLYzSWXjwiebYp6RpiUi8DvD9DwoU3qeSz` hardcoded in the example).
 
 ## Installation
 
@@ -17,7 +39,7 @@ $ cp .env.example .env
 
 Replace `.env` with reference to Integration Service api and its Api Key
 
-## Running the app
+## Running the service
 
 ```bash
 # development
@@ -44,4 +66,4 @@ $ npm run test:cov
 ```
 ## License
 
-Nest is [MIT licensed](LICENSE).
+[Apache 2.0](LICENSE).
